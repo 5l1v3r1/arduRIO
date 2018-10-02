@@ -1,7 +1,8 @@
 
 
-
-
+const int kirmiziPin = 9;
+const int yesilPin = 10;
+const int maviPin = 11;
 char receivedChar;
 boolean newData = false;
 
@@ -26,23 +27,34 @@ void recvOneChar() {
 void showNewData() {
  if (newData == true) {
   if (receivedChar=='a') {
-    digitalWrite(12,HIGH);
-    delay(100);
-    digitalWrite(12,LOW);
-    Serial.println("a geliyi");
+    Serial.println("kirmizi yakiliyor");
+    renkAyarla(255,0,0);
   }
   if (receivedChar=='b') {
+    Serial.println("yesil yakiliyor");
+    renkAyarla(0,255,0);
     
-    Serial.println("b geliyi");
   }  
   if (receivedChar=='c') {
+    Serial.println("mavi yakiliyor");
+    renkAyarla(0,0,255);
     
-    Serial.println("c geliyi");
   }  
  
    
   
  newData = false;
  }
+ 
+}
+void renkAyarla(int kirmizi, int yesil, int mavi)
+
+{
+ kirmizi = 255 - kirmizi;
+ yesil = 255 - yesil;
+ mavi = 255 - mavi;
+ analogWrite(kirmiziPin, kirmizi);
+ analogWrite(yesilPin, yesil);
+ analogWrite(maviPin, mavi);
 }
 
