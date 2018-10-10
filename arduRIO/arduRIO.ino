@@ -15,6 +15,7 @@ void setup() {
 void loop() {
  recvOneChar();
  showNewData();
+  
 }
 
 void recvOneChar() {
@@ -27,19 +28,50 @@ void recvOneChar() {
 void showNewData() {
  if (newData == true) {
   if (receivedChar=='a') {
-    Serial.println("kirmizi yakiliyor");
+    Serial.println("red color is turning on...");
+    renkAyarla(0,0,0);
     renkAyarla(255,0,0);
   }
   if (receivedChar=='b') {
-    Serial.println("yesil yakiliyor");
-    renkAyarla(0,255,0);
-    
+    for(int i = 0; i<30000; i=i+0.25){
+    Serial.println("green color is turning on...");
+    Serial.println("random color is turning on...");
+    renkAyarla(255,0,0);
+    delay(50);
+    renkAyarla(0,0,0);
+    delay(50);
+    renkAyarla(255,0,0);
+    delay(50);
+    renkAyarla(0,0,0);
+    delay(50);
+    renkAyarla(255,0,0);
+    delay(50);
+    renkAyarla(0,0,0);
+    delay(500);
+    renkAyarla(0,0,255);
+    delay(50);
+    renkAyarla(0,0,0);
+    delay(50);
+    renkAyarla(0,0,255);
+    delay(50);
+    renkAyarla(0,0,0);
+    delay(50);
+    renkAyarla(0,0,255);
+    delay(50);
+    renkAyarla(0,0,0);
+    delay(500);
+    }
   }  
   if (receivedChar=='c') {
-    Serial.println("mavi yakiliyor");
+    Serial.println("blue color is turning on...");
+    renkAyarla(0,0,0);
     renkAyarla(0,0,255);
     
   }  
+ 
+   
+   
+  
  
    
   
@@ -50,11 +82,8 @@ void showNewData() {
 void renkAyarla(int kirmizi, int yesil, int mavi)
 
 {
- kirmizi = 255 - kirmizi;
- yesil = 255 - yesil;
- mavi = 255 - mavi;
+
  analogWrite(kirmiziPin, kirmizi);
  analogWrite(yesilPin, yesil);
  analogWrite(maviPin, mavi);
 }
-
